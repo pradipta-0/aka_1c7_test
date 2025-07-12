@@ -1,0 +1,22 @@
+import streamlit as st
+
+st.title("📊 Simple Grade Automation")
+
+# Ask user how many grades to enter
+count = st.number_input("How many grades do you want to enter?", min_value=1, step=1)
+
+grades = []
+total = 0
+
+# Input fields for grades
+for i in range(count):
+    grade = st.number_input(f"Enter grade #{i+1}", key=f"grade_{i}", min_value=0.0)
+    grades.append(grade)
+
+# Button to calculate
+if st.button("Calculate Total and Average"):
+    total = sum(grades)
+    average = total / count
+
+    st.success(f"✅ Total Grades: {total}")
+    st.info(f"📈 Average Grade: {average:.2f}")
